@@ -12,6 +12,10 @@ const expressSession = require('express-session');
 const flash = require('connect-flash');
 
 const homePage = require('./routes/homePage');
+const cartPage = require("./routes/cartPage");
+const categories = require("./routes/categories");
+const product = require("./routes/product");
+
 
 const app = express();
 dotenv.config();
@@ -56,6 +60,11 @@ const db = mongoose.connect(
 
 app.use('/', homePage);
 app.use('/home', homePage);
+app.use("/cart", cartPage);
+app.use("/categories", categories);
+app.use("/product", product);
+
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

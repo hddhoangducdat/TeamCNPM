@@ -12,6 +12,9 @@ const flash = require('connect-flash');
 
 const routes = require('./routes/index');
 const homePage = require('./routes/homePage');
+const login = require("./routes/login");client
+const signup = require("./routes/signup");
+const initPasspostMiddleware = require("./middlewares/passportMiddleware");
 
 const app = express();
 dotenv.config();
@@ -53,7 +56,14 @@ const db = mongoose.connect(
   }
 );
 
-app.use('/', homePage);
+app.use('/', login(passport));
+app.use('/login', login(passport));
+app.use('/signup', signup(passport));
+app.use("/home", homePage);
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

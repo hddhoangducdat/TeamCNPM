@@ -1,13 +1,14 @@
 var express = require("express");
 var router = express.Router();
+var isAuthenticated = require("../middlewares/isAuthenticated");
 
 /* GET users listing. */
-router.get("/", function(req, res) {
+router.get("/", isAuthenticated, function(req, res) {
   
   res.render("homePage", {
     title: "Black Hole Admin",
     user: {
-      name: "",
+      name: req.user.lastName,
       image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Hammer_and_sickle.svg'
     },
     earning: {

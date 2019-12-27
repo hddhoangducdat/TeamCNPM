@@ -1,0 +1,105 @@
+<body class="bg-gradient-primary">
+ 
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản!</h1>
+                            </div>
+                            <form class="user" method="post" action="/signup">
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <input type="text" name="firstName" class="form-control form-control-user" id="txtFirstName"
+                                            placeholder="Họ và tên đệm" required>
+                                    </div>
+                                    {{#if usernameWarning}}
+                                        <div style="margin-left: 20px" class="text-danger">
+                                            <span>{{usernameWarning}}</span>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                                 <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <input type="text" name="lastName" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="Tên" required>
+                                    </div>
+                                    {{#if usernameWarning}}
+                                        <div style="margin-left: 20px" class="text-danger">
+                                            <span>{{usernameWarning}}</span>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="username" class="form-control form-control-user" id="exampleInputUsername"
+                                        placeholder="Username" required>
+                                    {{#if usernameWarning}}
+                                        <div style="margin-left: 20px" class="text-danger">
+                                            <span>{{usernameWarning}}</span>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" name="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Mật khẩu" required>
+                                        {{#if passwordWarning}}
+                                            <div style="margin-left: 20px" class="text-danger">
+                                                <span>{{passwordWarning}}</span>
+                                            </div>
+                                        {{/if}}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Kiểm tra mật khẩu" required>
+                                        {{#if confirmPassWarning}}
+                                                <div style="margin-left: 20px" class="text-danger">
+                                                    <span>{{confirmPassWarning}}</span>
+                                                </div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký tài khoản" />
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <a href="/forgotPassword" class="btn btn-google btn-user btn-block">
+                                            Quên mật khẩu
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <a href="/" class="btn btn-facebook btn-user btn-block">
+                                            Đã có tài khoản ? Đăng nhập ngay !
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+</body>

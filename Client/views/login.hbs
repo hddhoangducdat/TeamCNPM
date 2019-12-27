@@ -1,0 +1,81 @@
+<body class="login-page sidebar-collapse">
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100"
+        id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/home">
+                    BLACK HOLE
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup" onclick="scrollToDownload()">
+                            <i class="material-icons">cloud_download</i> Sign Up
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/forgotpassword" onclick="scrollToDownload()">
+                            <i class="material-icons">search</i> FORGOT PASSWORD
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div class="page-header header-filter"
+        style="background-image: url('img/bg7.jpg'); background-size: cover; background-position: top center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                    <div class="card card-login">
+                        <form class="form" method="post" action="/login">
+                            <div class="card-header card-header-primary text-center">
+                                <h4 class="card-title">Log In</h4>
+                            </div>
+                            <br />
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">people</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="username" class="form-control" placeholder="User Name..."
+                                        required>
+                                </div>
+                                {{#if usernameWarning}}
+                                <div style="margin-left: 53px" class="text-danger">
+                                    <span>{{usernameWarning}}</span>
+                                </div>
+                                {{/if}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Password..." required>
+                                </div>
+                                {{#if passwordWarning}}
+                                <div style="margin-left: 53px" class="text-danger">
+                                    <span>{{passwordWarning}}</span>
+                                </div>
+                                {{/if}}
+                            </div>
+                            <div class="card-footer text-center">
+                                <input type="submit" value="Login" id="btnLogin"
+                                    class="btn btn-primary btn-wd btn-lg" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

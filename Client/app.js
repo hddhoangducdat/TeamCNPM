@@ -12,6 +12,11 @@ const expressSession = require('express-session');
 const flash = require('connect-flash');
 
 const homePage = require('./routes/homePage');
+
+const login = require("./routes/login");
+const signup = require("./routes/signup");
+const initPasspostMiddleware = require("./middlewares/passportMiddleware");
+
 const cartPage = require("./routes/cartPage");
 const categories = require("./routes/categories");
 const product = require("./routes/product");
@@ -47,7 +52,7 @@ app.use(flash());
 app.use(expressSession({secret: process.env.SECRET_KEY}));
 app.use(passport.initialize());
 app.use(passport.session());
-// initPasspostMiddleware(passport);
+initPasspostMiddleware(passport);
 
 const db = mongoose.connect(
   dbUrl,
@@ -60,6 +65,12 @@ const db = mongoose.connect(
 
 app.use('/', homePage);
 app.use('/home', homePage);
+app.use("/login", login(passport));
+app.use("/signup", signup(passport));
+app.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/");
+});
 app.use("/cart", cartPage);
 app.use("/categories", categories);
 app.use("/product", product);

@@ -18,7 +18,8 @@ const productSchema = new mongoose.Schema({
   createdBy: String,
   modifiedBy: String,
   modifiedDate: String,
-  metaKeywords: String
+  metaKeywords: String,
+  sellerId: String
 });
 
 module.exports = mongoose.model("product", productSchema, "product");

@@ -30,23 +30,35 @@
             </div>
 
             <!-- Nav Item - Charts -->
+            {{#if user.type}}
             <li class="nav-item">
                 <a class="nav-link" href="/user">
                     <i class="user icon"></i>
                     <span>Người dùng</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/management/brand">
+                    <i class="dolar icon"></i>
+                    <span>Người bán hàng</span></a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="user icon"></i>
+                    <span>Thông tin cá nhân</span></a>
+            </li>
+            {{/if}}
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Hệ thống hàng</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/management/product">Sản phẩm</a>
-                        <a class="collapse-item" href="/management/brand">Nhà cung cấp</a>
                         <a class="collapse-item" href="/management/shopping">Đơn đặt hàng</a>
                     </div>
                 </div>
@@ -309,7 +321,7 @@
 
                     <!-- Content Row -->
                     <h3>
-                        Sản phẩm của bạn
+                        Top 10 sản phẩm bán chạy trong tháng
                     </h3>
                     <br />
                     <div class="row">

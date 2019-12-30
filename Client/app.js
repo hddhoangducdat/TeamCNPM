@@ -12,7 +12,7 @@ const expressSession = require('express-session');
 const flash = require('connect-flash');
 
 const homePage = require('./routes/homePage');
-
+const historyPage = require("./routes/historyPage");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
 const initPasspostMiddleware = require("./middlewares/passportMiddleware");
@@ -20,6 +20,7 @@ const initPasspostMiddleware = require("./middlewares/passportMiddleware");
 const cartPage = require("./routes/cartPage");
 const categories = require("./routes/categories");
 const product = require("./routes/product");
+
 
 
 const app = express();
@@ -65,6 +66,7 @@ const db = mongoose.connect(
 
 app.use('/', homePage);
 app.use('/home', homePage);
+app.use("/history", historyPage);
 app.use("/login", login(passport));
 app.use("/signup", signup(passport));
 app.get("/logout", function(req, res) {
@@ -74,6 +76,7 @@ app.get("/logout", function(req, res) {
 app.use("/cart", cartPage);
 app.use("/categories", categories);
 app.use("/product", product);
+
 
 
 

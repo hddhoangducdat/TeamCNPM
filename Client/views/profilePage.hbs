@@ -1,0 +1,185 @@
+<body class="profile-page sidebar-collapse">
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100"
+        id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/home">
+                    BLACK HOLE </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">dashboard</i>Mặt hàng
+                        </a>
+                        <div class="dropdown-menu dropdown-with-icons">
+                            <a href="/categories/sport" class="dropdown-item">
+                                Thể thao
+                            </a>
+                            <a href="/categories/fashion" class="dropdown-item">
+                                Thời trang
+                            </a>
+                            <a href="/categories/electronic" class="dropdown-item">
+                                Điện tử
+                            </a>
+                            <a href="/categories/transport" class="dropdown-item">
+                                Phương tiện
+                            </a>
+                            <a href="/categories/book" class="dropdown-item">
+                                Sách
+                            </a>
+                            <a href="/categories/toolkit" class="dropdown-item">
+                                Phụ kiện - thiết bị số
+                            </a>
+                            <a href="/categories/food" class="dropdown-item">
+                                Thực phẩm
+                            </a>
+                            <a href="/categories/lifestyle" class="dropdown-item">
+                                Nhà cửa - đời sống
+                            </a>
+                        </div>
+                    </li>
+                    {{#if user}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart" onclick="scrollToDownload()">
+                            <i class="material-icons">shopping_cart</i> Giỏ hàng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history" onclick="scrollToDownload()">
+                            <i class="material-icons">history
+                            </i> Lịch sử
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile" onclick="scrollToDownload()">
+                            <i class="material-icons">person_pin
+                            </i> {{user.lastName}}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <i class="material-icons">exit_to_app</i> Logout
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" onclick="scrollToDownload()">
+                            <i class="material-icons">lock_open
+                            </i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup" onclick="scrollToDownload()">
+                            <i class="material-icons">assignment
+                            </i> Register
+                        </a>
+                    </li>
+                    {{/if}}
+                    <li class="nav-item">
+                        <form class="form-inline ml-auto">
+                            <div class="form-group no-border">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm">
+                            </div>
+                            <button type="submit" class="btn btn-white btn-just-icon btn-round">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('img/city-profile.jpg');">
+    </div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                {{#if profile.picture}}
+                                <img src={{profile.picture}} alt="Circle Image"
+                                    class="img-raised rounded-circle img-fluid">
+                                {{else}}
+                                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
+                                    alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                {{/if}}
+                            </div>
+                            <div class="name">
+                                <h2 class="title">{{user.firstName}}{{user.lastName}}</h2>
+                                {{#if profile.phone}}
+                                <h4>{{profile.phone}}</h4>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description text-center">
+                    {{#if profile.sex}}
+                    <p>Giới tính: {{profile.sex}}</p>
+                    {{/if}}
+                    {{#if profile.address}}
+                    <p>Địa chỉ: {{profile.address}}</p>
+                    {{/if}}
+                    <p>Email: {{user.email}}</p>
+                </div>
+                <br /> <br />
+                <div class="row">
+
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <h3>
+                            THAY ĐỔI THÔNG TIN CÁ NHÂN
+                        </h3>
+                        <form id="form" class="ui form">
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Họ</label>
+                                    <input type="text" name="firstName" placeholder="Họ">
+                                </div>
+                                <div class="field">
+                                    <label>Tên</label>
+                                    <input type="text" name="lastName" placeholder="Tên">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Địa chỉ</label>
+                                <input type="text" name="address" placeholder="Địa chỉ">
+                            </div>
+                            <div class="three fields">
+                                <div class="field">
+                                    <label>Giới tính</label>
+                                    <input type="text" name="sex" placeholder="Giới tính">
+                                </div>
+                                <div class="field">
+                                    <label>Số điện thoại</label>
+                                    <input type="text" name="phone" placeholder="Số điện thoại">
+                                </div>
+                                <div class="field">
+                                    <label>Email</label>
+                                    <input type="text" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <button class="ui button primary">Thay đổi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /> <br />
+    </div>
+
+    <script src="js/updateProfile.js">
+
+    </script>
+</body>

@@ -12,6 +12,7 @@ const expressSession = require('express-session');
 const flash = require('connect-flash');
 
 const homePage = require('./routes/homePage');
+const profilePage = require("./routes/profilePage");
 const historyPage = require("./routes/historyPage");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
@@ -66,6 +67,7 @@ const db = mongoose.connect(
 
 app.use('/', homePage);
 app.use('/home', homePage);
+app.use("/profile", profilePage);
 app.use("/history", historyPage);
 app.use("/login", login(passport));
 app.use("/signup", signup(passport));

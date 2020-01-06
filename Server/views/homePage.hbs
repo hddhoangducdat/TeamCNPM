@@ -34,20 +34,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/user">
                     <i class="user icon"></i>
-                    <span>Người dùng</span></a>
+                    <span>Khách hàng</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/management/brand">
-                    <i class="dolar icon"></i>
+                    <i class="fas fa-robot"></i>
                     <span>Người bán hàng</span></a>
             </li>
-            {{else}}
-            <li class="nav-item">
-                <a class="nav-link" href="/profile">
-                    <i class="user icon"></i>
-                    <span>Thông tin cá nhân</span></a>
-            </li>
-            {{/if}}
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -63,6 +56,26 @@
                     </div>
                 </div>
             </li>
+            {{else}}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="user icon"></i>
+                    <span>Thông tin cá nhân</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/upload_product">
+                    <i class="fas fa-space-shuttle"></i>
+                    <span>Đăng sản phẩm</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/management/product">
+                    <i class="fas fa-meteor"></i>
+                    <span>Sản phẩm</span></a>
+            </li>
+
+            {{/if}}
 
 
 
@@ -84,14 +97,21 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+
+                    <form id="dropdownMenuOffset"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Tìm kiếm người dùng và hàng hóa" aria-label="Search"
-                                aria-describedby="basic-addon2">
+                            <div class="dropdown mr-1">
+                                <input id="searchInput" type="text"
+                                    class="dropdown-toggle form-control bg-light border-0 small"
+                                    placeholder="Tìm kiếm người dùng và hàng hóa" aria-label="Search"
+                                    aria-describedby="basic-addon2" aria-haspopup="true" aria-expanded="true"
+                                    data-offset="10,20" autocomplete="off">
+                                <div id="dropdownItem" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                                </div>
+                            </div>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -160,14 +180,14 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-6 col-md-6">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Thu
-                                                nhập ngày</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{earning.day}}đ</div>
+                                                nhập</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{earning}} đồng</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -178,36 +198,14 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-6 col-md-6">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">THU
-                                                NHẬP TUẦN</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{earning.week}}đ</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Thu nhập
-                                                tháng</div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        {{earning.month}}đ</div>
-                                                </div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Số
+                                                lượng sản phẩm bán được</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{quantity}} sản phẩm
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -218,110 +216,14 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">THU
-                                                NHẬP NĂM</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{earning.year}}đ</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Content Row -->
-                    <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Số
-                                                LƯỢNG HÀNG BÁN RA TRONG NGÀY</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{product.day}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">SỐ
-                                                LƯỢNG HÀNG BÁN RA TRONG Tuần</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{product.week}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">SỐ LƯỢNG
-                                                HÀNG BÁN RA TRONG THÁNG</div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        {{product.month}}</div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Số
-                                                lượng hàng bán ra trong năm</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{product.year}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Content Row -->
                     <h3>
-                        Top 10 sản phẩm bán chạy trong tháng
+                        Top 10 sản phẩm lợi nhuận
                     </h3>
                     <br />
                     <div class="row">
@@ -338,10 +240,12 @@
                                     <div class="card-body">
                                         <div class="text-center">
                                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                                src={{this.image}} alt="" />
+                                                src="{{this.images}}" alt="" />
                                         </div>
-                                        <p>Số lượng: {{this.number}}</p>
-                                        <p>Sồ tiền: {{this.earn}}đ</p>
+                                        <p>Số lượng bán được: {{this.sold}}</p>
+                                        <p>Lợi nhuận: {{this.profit}}đ</p>
+                                        <p>Giá bán: {{this.price}}</p>
+                                        <p>Số lượng hàng còn: {{this.quantity}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -350,9 +254,7 @@
                         {{/each}}
                     </div>
 
-                </div>
-
-                <!-- /.container-fluid -->
+                </div> <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
@@ -365,7 +267,7 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    <a class=" scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
@@ -375,12 +277,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bạn muốn rời đi?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn muốn rời
+                        đi?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Chọn thoát nếu bạn muốn đăng xuất !!!.</div>
+                <div class="modal-body">Chọn thoát nếu bạn muốn đăng xuất !!!.
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
                     <a class="btn btn-primary" href="/">Thoát</a>
@@ -404,6 +308,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/search.js"></script>
 
 
 </body>

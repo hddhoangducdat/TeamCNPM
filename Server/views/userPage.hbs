@@ -34,11 +34,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/user">
                     <i class="user icon"></i>
-                    <span>Người dùng</span></a>
+                    <span>Khách hàng</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/management/brand">
-                    <i class="dolar icon"></i>
+                    <i class="fas fa-robot"></i>
                     <span>Người bán hàng</span></a>
             </li>
             {{else}}
@@ -46,6 +46,16 @@
                 <a class="nav-link" href="/profile">
                     <i class="user icon"></i>
                     <span>Thông tin cá nhân</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/upload_product">
+                    <i class="fas fa-space-shuttle"></i>
+                    <span>Đăng sản phẩm</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/management/product">
+                    <i class="fas fa-meteor"></i>
+                    <span>Sản phẩm</span></a>
             </li>
             {{/if}}
 
@@ -84,14 +94,20 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <form id="dropdownMenuOffset"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Tìm kiếm người dùng và hàng hóa" aria-label="Search"
-                                aria-describedby="basic-addon2">
+                            <div class="dropdown mr-1">
+                                <input id="searchInput" type="text"
+                                    class="dropdown-toggle form-control bg-light border-0 small"
+                                    placeholder="Tìm kiếm người dùng và hàng hóa" aria-label="Search"
+                                    aria-describedby="basic-addon2" aria-haspopup="true" aria-expanded="false"
+                                    data-offset="10,20" autocomplete="off">
+                                <div id="dropdownItem" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                                </div>
+                            </div>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -130,7 +146,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
-                                <img class="img-profile rounded-circle" src={{user.image}}>
+                                <img class="img-profile rounded-circle" src="{{user.image}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -165,30 +181,30 @@
 
                         <div class="ui link cards">
                             {{#each people}}
-                            <div class="card">
+
+                            <div class="card" id="{{this._id}}-people">
                                 <div class="image">
-                                    <img src={{this.image}}>
+                                    <img src="{{this.image}}">
                                 </div>
                                 <div class="content">
-                                    <div class="header">{{this.name}}</div>
+                                    <div class="header">{{this.firstName}} {{this.lastName}}</div>
                                     <div class="meta">
-                                        <a>{{this.phone}}</a>
+                                        <a>{{this.username}}</a>
                                     </div>
                                     <div class="description">
                                         <p>Giới tính: {{this.sex}}</p>
                                         <p>Địa chỉ: {{this.address}}</p>
                                         <p>Email: {{this.email}}</p>
+                                        <p>Số điện thoại: {{this.phone}}</p>
                                     </div>
                                 </div>
                                 <div class="extra content">
                                     <span class="right floated">
-                                        <div class="ui basic red button">Xóa người dùng</div>
+                                        <div class="deleteuser ui basic red button" data-id={{this._id}}>
+                                            Xóa người dùng
+                                        </div>
                                     </span>
-                                    <span>
-                                        <a href="/user/modify">
-                                            <div class="ui basic button green">Chỉnh sửa</div>
-                                        </a>
-                                    </span>
+
 
                                 </div>
                             </div>
@@ -252,4 +268,6 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/search.js"></script>
 </body>

@@ -7,20 +7,23 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
     "hbs": "^4.0.6",
+    "http-msgs": "^1.0.9",
+    "lodash": "^4.17.15",
     "mongoose": "^5.7.11",
     "morgan": "^1.9.1",
-    "lodash": "^4.17.15",
+    "multer": "^1.4.2",
     "nodemon": "^1.19.4",
-    "static-favicon": "~1.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "connect-flash": "^0.1.1"
+    "path": "^0.12.7",
+    "static-favicon": "~1.0.0"
   }
 }

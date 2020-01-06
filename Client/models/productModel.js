@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
   metatitle: String,
   description: String,
   producer: String,
-  images: [],
+  images: String,
   price: String,
   sold: String,
   promotionPrice: String,
@@ -19,7 +19,9 @@ const productSchema = new mongoose.Schema({
   createdBy: String,
   modifiedBy: String,
   modifiedDate: String,
-  metaKeywords: String
+  metaKeywords: String,
+  carousel: String,
+  productName: String
 });
 
 module.exports = mongoose.model("product", productSchema, "product");

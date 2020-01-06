@@ -34,20 +34,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/user">
                     <i class="user icon"></i>
-                    <span>Người dùng</span></a>
+                    <span>Khách hàng</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/management/brand">
-                    <i class="dolar icon"></i>
+                    <i class="fas fa-robot"></i>
                     <span>Người bán hàng</span></a>
             </li>
-            {{else}}
-            <li class="nav-item">
-                <a class="nav-link" href="/profile">
-                    <i class="user icon"></i>
-                    <span>Thông tin cá nhân</span></a>
-            </li>
-            {{/if}}
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -63,6 +56,25 @@
                     </div>
                 </div>
             </li>
+            {{else}}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="user icon"></i>
+                    <span>Thông tin cá nhân</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/upload_product">
+                    <i class="fas fa-space-shuttle"></i>
+                    <span>Đăng sản phẩm</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/management/product">
+                    <i class="fas fa-meteor"></i>
+                    <span>Sản phẩm</span></a>
+            </li>
+
+            {{/if}}
 
         </ul>
         <!-- End of Sidebar -->
@@ -82,14 +94,20 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <form id="dropdownMenuOffset"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Tìm kiếm người dùng và hàng hóa" aria-label="Search"
-                                aria-describedby="basic-addon2">
+                            <div class="dropdown mr-1">
+                                <input id="searchInput" type="text"
+                                    class="dropdown-toggle form-control bg-light border-0 small"
+                                    placeholder="Tìm kiếm người dùng và hàng hóa" aria-label="Search"
+                                    aria-describedby="basic-addon2" aria-haspopup="true" aria-expanded="true"
+                                    data-offset="10,20" autocomplete="off">
+                                <div id="dropdownItem" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                                </div>
+                            </div>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -128,8 +146,10 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
-                                <img class="img-profile rounded-circle" src={{user.image}}>
+                                <img class="img-profile rounded-circle" src="{{user.image}}">
                             </a>
+
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
@@ -158,18 +178,22 @@
 
                     <!-- Content Row -->
                     {{#each brand}}
-                    <div class="ui segment">
+                    <div id="{{this._id}}-brand" class="ui segment">
                         <div class="ui grid">
                             <div class="three wide column">
-                                <img class="ui image fluid" src={{user.image}} />
+                                <img class="ui image fluid" src="{{this.image}}" />
                             </div>
                             <div class="thirteen wide column">
                                 <h2 class="ui title">{{this.firstName}} {{this.lastName}}</h2>
-                                <h4 class="ui description">Số sản phẩm: {{this.product}}</h4>
-                                <a href="/management/product">
-                                    <button class="ui button green">Xem sản phẩm</button>
+                                <h4 class="ui description">Tên tài khoản: {{this.username}}
+                                    <p class="ui meta">Email: {{this.email}}</p>
+                                </h4>
+
+                                <a href="/management/product/{{this._id}}">
+                                    <button class="ui button green">Xem sản
+                                        phẩm</button>
                                 </a>
-                                <button class="ui button red">Xoá nhà cung cấp</button>
+                                <button class="ui button red productItem" data-id={{this._id}}>Xóa tài khoản</button>
                             </div>
                         </div>
                     </div>
@@ -231,5 +255,6 @@
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
 
-
+    <script src="../js/productBrand.js"></script>
+    <script src="../js/search.js"></script>
 </body>

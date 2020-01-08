@@ -1,6 +1,6 @@
 var express = require("express");
 var isAuthenticated = require("../middlewares/isAuthenticated");
-var profileController = require("../controllers/userController");
+var productController = require("../controllers/productController");
 var router = express.Router();
 var multer = require("multer");
 var path = require("path");
@@ -17,15 +17,15 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage
-}).single("userImage");
+}).single("uploadProduct");
 
-router.get("/", isAuthenticated, profileController.profile_info);
+router.get("/", isAuthenticated, productController.show_form_upload_product);
 
 router.post(
   "/submit",
   isAuthenticated,
   upload,
-  profileController.upload_profile
+  productController.upload_product
 );
 
 module.exports = router;

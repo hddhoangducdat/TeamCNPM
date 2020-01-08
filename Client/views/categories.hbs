@@ -1,4 +1,4 @@
-<body>
+<body id="page-top">
     <nav class="navbar  fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
         <div class="container">
 
@@ -85,16 +85,20 @@
                         </a>
                     </li>
                     {{/if}}
-                    <li class="nav-item">
-                        <form class="form-inline ml-auto">
+                    <form id="dropdownMenuOffset" class="form-inline ml-auto">
+                        <div class="dropdown mr-1">
                             <div class="form-group no-border">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm">
+                                <input id="searchInput" type="text" class="dropdown-toggle form-control"
+                                    placeholder="Tìm kiếm" aria-label="Search" aria-describedby="basic-addon2"
+                                    aria-haspopup="true" aria-expanded="false" data-offset="10,20" autocomplete="off">
                             </div>
-                            <button type="submit" class="btn btn-white btn-just-icon btn-round">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </form>
-                    </li>
+                            <div id="dropdownItem" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-white btn-just-icon btn-round">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
                 </ul>
             </div>
         </div>
@@ -129,7 +133,7 @@
             {{#each carts}}
             <div class="card">
                 <div class="image">
-                    <img src={{this.images}}>
+                    <img src="{{this.images}}">
                 </div>
                 <div class="content">
                     <div class="header">
@@ -138,7 +142,7 @@
                         </a>
                     </div>
                     <div class="meta">
-                        <a href={{this.categoryUrl}}>{{this.category}}</a>from
+                        <a href="/categories/{{this.category}}">{{this.productName}}</a>from
                         <a href="/CreatedBy/{{this.createdBy}}">{{this.createdBy}}</a>
                     </div>
                     <div class="description">
@@ -147,7 +151,7 @@
                 </div>
                 <div class="extra content">
 
-                    <span>
+                    <span class="addToCart" data-id={{this._id}}>
                         <i class="like icon"></i>
                         Add to cart
                     </span>
@@ -201,6 +205,8 @@
     <!--  Google Maps Plugin    -->
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="../../js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+    <script src="../../js/cart.js"></script>
+    <script src="../../js/search.js"></script>
 
 
 </body>

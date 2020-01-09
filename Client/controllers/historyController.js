@@ -33,7 +33,7 @@ exports.history_list = async (req, res) => {
     };
   });
   res.render("historyPage", {
-    title: "Black Hole",
+    title: "TeamCNPM",
     condition: response ? false : true,
     user: req.user,
     history: result

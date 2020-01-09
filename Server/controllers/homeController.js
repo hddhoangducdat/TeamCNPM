@@ -33,7 +33,7 @@ exports.home_show = async (req, res) => {
   if (req.user.type === "admin") {
     const user = await userModel.find();
     res.render("userPage", {
-      title: "Black Hole Admin",
+      title: "TeamCNPM",
       user: {
         name: req.user.username,
         image: req.user.image,
@@ -60,7 +60,7 @@ exports.home_show = async (req, res) => {
       quantity += p.sold;
     });
     res.render("homePage", {
-      title: "Black Hole Admin",
+      title: "TeamCNPM",
       user: {
         name: req.user.username,
         image: req.user.image,
@@ -91,4 +91,57 @@ exports.search_product = async (req, res) => {
   httpMsgs.sendJSON(req, res, {
     arr
   });
+};
+
+exports.user_info = async (req, res) => {
+  let user = await userModel.findById(req.params.id);
+  res.render("userInfo", {
+    title: "TeamCNPM",
+    user: {
+      name: req.user.username,
+      image: req.user.image,
+      type: req.user.type === "admin" ? true : false
+    },
+    userInfo: user
+  });
+};
+
+exports.change_user_info = async (req, res) => {
+  let user = await userModel.findById(req.params.id);
+  user.firstName = req.body.firstName;
+  user.lastName = req.body.lastName;
+  user.email = req.body.email;
+  user.sex = req.body.sex;
+  user.address = req.body.address;
+  user.phone = req.body.phone;
+  if (req.file) {
+    user.image = "http://localhost:3001/" + "uploads/" + req.file.filename;
+  }
+  await user.save();
+  res.redirect(`/user/${req.params.id}`);
+};
+
+exports.upload_profile = async (req, res) => {
+  let seller = await sellerModel.findById(req.user._id);
+  seller.firstName = req.body.firstName;
+  seller.lastName = req.body.lastName;
+  seller.username = req.body.username;
+  seller.email = req.body.email;
+  if (req.file) {
+    seller.image = "http://localhost:3001/" + "uploads/" + req.file.filename;
+  }
+  await seller.save();
+  res.redirect("/profile");
+};
+
+exports.block_user = async (req, res) => {
+  let user = await userModel.findById(req.params.id);
+  user.blocked = true;
+  await user.save();
+};
+
+exports.unblock_user = async (req, res) => {
+  let user = await userModel.findById(req.params.id);
+  user.blocked = false;
+  await user.save();
 };

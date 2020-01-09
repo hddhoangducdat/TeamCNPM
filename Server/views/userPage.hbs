@@ -8,7 +8,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-                <div class="sidebar-brand-text mx-3">Black Hole Admin</div>
+                <div class="sidebar-brand-text mx-3">TeamCNPM</div>
             </a>
 
             <!-- Divider -->
@@ -187,15 +187,9 @@
                                     <img src="{{this.image}}">
                                 </div>
                                 <div class="content">
-                                    <div class="header">{{this.firstName}} {{this.lastName}}</div>
+                                    <a class="header" href="/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
                                     <div class="meta">
                                         <a>{{this.username}}</a>
-                                    </div>
-                                    <div class="description">
-                                        <p>Giới tính: {{this.sex}}</p>
-                                        <p>Địa chỉ: {{this.address}}</p>
-                                        <p>Email: {{this.email}}</p>
-                                        <p>Số điện thoại: {{this.phone}}</p>
                                     </div>
                                 </div>
                                 <div class="extra content">

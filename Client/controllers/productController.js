@@ -11,7 +11,7 @@ exports.product_list = layout => async (req, res) => {
   });
 
   res.render(layout, {
-    title: "Black Hole",
+    title: "TeamCNPM",
     condition: false,
     user: req.user,
     carousel,
@@ -25,7 +25,7 @@ exports.product_list_categories = layout => async (req, res) => {
   });
   console.log(carts);
   res.render(layout, {
-    title: "Black Hole",
+    title: "TeamCNPM",
     params: req.params.type,
     user: req.user,
     condition: false,
@@ -49,7 +49,7 @@ exports.product_info = layout => async (req, res) => {
   result = result.filter(r => !r._id.equals(req.params.id));
   while (result.length > 5) result.pop();
   res.render(layout, {
-    title: "Black Hole",
+    title: "TeamCNPM",
     user: req.user,
     product: carts,
     comment: comment ? comment.comments : null,
@@ -87,7 +87,7 @@ exports.product_sort_list = layout => async (req, res) => {
   }
 
   res.render(layout, {
-    title: "Black Hole",
+    title: "TeamCNPM",
     condition: false,
     user: req.user,
     params,
@@ -121,7 +121,7 @@ exports.product_sort_categories = layout => async (req, res) => {
     params = "Ngày đăng tải";
   }
   res.render(layout, {
-    title: "Black Hole",
+    title: "TeamCNPM",
     params: req.params.type,
     user: req.user,
     condition: false,

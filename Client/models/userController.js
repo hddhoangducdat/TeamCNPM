@@ -2,7 +2,7 @@ var userModel = require("../models/userModel");
 
 exports.profile_info = async (req, res) => {
   res.render("profilePage", {
-    title: "Black Hole",
+    title: "TeamCNPM",
     condition: false,
     user: req.user
     // profile: {

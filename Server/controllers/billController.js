@@ -33,7 +33,7 @@ exports.show_bill = async (req, res) => {
     };
   });
   res.render("shoppingPage", {
-    title: "Black Hole Admin",
+    title: "TeamCNPM",
     user: {
       name: req.user.username,
       image: req.user.image,

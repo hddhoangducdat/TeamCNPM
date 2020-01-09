@@ -3,15 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res) {
-  res.render("login", { title: "Black Hole Admin" });
+  res.render("login", { title: "TeamCNPM" });
 });
 
 router.get("/signup", function(req, res) {
-  res.render("signup", { title: "Black Hole Admin" });
+  res.render("signup", { title: "TeamCNPM" });
 });
 
 router.get("/forgotPassword", function(req, res) {
-  res.render("forgotPassword", { title: "Black Hole Admin" });
+  res.render("forgotPassword", { title: "TeamCNPM" });
 });
 
 module.exports = router;

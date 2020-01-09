@@ -15,7 +15,7 @@ exports.cart_list = async (req, res) => {
     carts.forEach(cart => (sum = sum + parseInt(cart.price) * cart.number));
 
   res.render("cartPage", {
-    title: "Black Hole",
+    title: "TeamCNPM",
     user: req.user,
     // condition: false,
     sum,

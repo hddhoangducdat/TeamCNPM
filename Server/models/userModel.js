@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   picture: String,
   sex: String,
   address: String,
-  image: String
+  image: String,
+  blocked: Boolean
 });
 
 module.exports = mongoose.model("user", userSchema, "user");

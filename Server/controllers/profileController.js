@@ -2,7 +2,7 @@ var sellerModel = require("../models/sellerModel");
 
 exports.show_profile = (req, res) => {
   res.render("profilePage", {
-    title: "Black Hole Admin",
+    title: "TeamCNPM",
 
     user: {
       username: req.user.username,
@@ -23,10 +23,7 @@ exports.upload_profile = async (req, res) => {
   seller.username = req.body.username;
   seller.email = req.body.email;
   if (req.file) {
-    seller.image =
-      "https://black-hole-admin.herokuapp.com/" +
-      "uploads/" +
-      req.file.filename;
+    seller.image = "http://localhost:3001/" + "uploads/" + req.file.filename;
   }
   await seller.save();
   res.redirect("/profile");

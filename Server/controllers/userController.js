@@ -6,7 +6,7 @@ exports.all_seller = async (req, res) => {
   _.remove(brand, br => br.type === "admin");
 
   res.render("brandPage", {
-    title: "Black Hole Admin",
+    title: "TeamCNPM",
     user: {
       name: req.user.username,
       image: req.user.image,

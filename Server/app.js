@@ -18,6 +18,7 @@ const homePage = require("./routes/homePage");
 const managementPage = require("./routes/management");
 const initPasspostMiddleware = require("./middlewares/passportMiddleware");
 const profile = require("./routes/profile");
+const upload_product = require("./routes/uploadProduct");
 
 const app = express();
 dotenv.config();
@@ -42,7 +43,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser("keyboard cat"));
-app.use(expressSession({ cookie: { maxAge: 60000 } })); //60000ms ~ 60s
+app.use(expressSession({ cookie: { maxAge: 6000 * 100 } })); //60000ms ~ 60s
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
@@ -64,6 +65,7 @@ app.use("/", login(passport));
 app.use("/login", login(passport));
 app.use("/signup", signup(passport));
 app.use("/user", users);
+app.use("/upload_product", upload_product);
 app.use("/home", homePage);
 app.use("/management", managementPage);
 app.use("/profile", profile);

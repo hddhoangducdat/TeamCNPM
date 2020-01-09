@@ -43,6 +43,14 @@ module.exports = passport => {
             );
           }
 
+          if (user.blocked) {
+            return done(
+              null,
+              false,
+              req.flash("usernameWarning", "Your account has been blocked")
+            );
+          }
+
           // User exists but wrong password, log the error
           if (!isValidPassword(user.password, password)) {
             console.log("Invalid Password");

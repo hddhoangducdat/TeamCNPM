@@ -8,7 +8,7 @@ router.get("/:nsx", async (req, res) => {
   const carts = await productModel.find({ createdBy: req.params.nsx });
 
   res.render("createdBy", {
-    title: "Black Hole",
+    title: "TeamCNPM",
     condition: false,
     user: req.user,
     carts

@@ -1,6 +1,7 @@
 <body id="page-top">
-    <nav class="navbar fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+    <nav class="navbar  fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
         <div class="container">
+
             <div class="navbar-translate">
                 <a class="navbar-brand" href="/home">
                     TeamCNPM </a>
@@ -15,9 +16,8 @@
             <div class="collapse navbar-collapse">
 
                 <ul class="navbar-nav ml-auto">
-
                     <li class="dropdown nav-item">
-                        <a href="/home" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <i class="material-icons">dashboard</i>Mặt hàng
                         </a>
                         <div class="dropdown-menu dropdown-with-icons">
@@ -47,6 +47,7 @@
                             </a>
                         </div>
                     </li>
+
                     {{#if user}}
                     <li class="nav-item">
                         <a class="nav-link" href="/cart" onclick="scrollToDownload()">
@@ -102,102 +103,79 @@
             </div>
         </div>
     </nav>
-    <br /> <br /> <br /> <br /> <br />
-    <br /> <br /> <br /> <br /> <br />
-    {{#if condition}}
+
+    <br /> <br />
+    <br /> <br />
     <div class="ui container">
-        <h1>Chưa có lịch sử sử dụng Web</h1>
+        <div class="title">
+            <h2>Mặt hàng hiện có</h2>
+        </div>
+        <div class="ui link cards centered grid">
+            {{#each carts}}
+            <div class="card">
+                <div class="image">
+                    <img src="{{this.images}}">
+                </div>
+                <div class="content">
+                    <div class="header">
+                        <a href="/product/{{this._id}}">
+                            {{this.name}}
+                        </a>
+                    </div>
+                    <div class="meta">
+                        <a href="/categories/{{this.category}}">{{this.productName}}</a>from
+                        <a href="/CreatedBy/{{this.createdBy}}">{{this.createdBy}}</a>
+                    </div>
+                    <div class="description">
+                        {{this.price}}
+                    </div>
+                </div>
+                <div class="extra content">
+
+                    <span>
+                        <i class="like icon"></i>
+                        Add to cart
+                    </span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
     </div>
-    {{else}}
-    <div class="ui container">
-        {{#each history}}
-        {{#if this.condition4}}
-        <div class="ui three top attached steps">
-            <div class="disabled step">
-                <i class="payment icon"></i>
-                <div class="content">
-                    <div class="title">Hủy đơn hàng</div>
-                </div>
-            </div>
-        </div>
-        <div class="ui attached segment">
-            <ul class="list-group">
-                {{#each this.bill}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="/product/{{this._id}}">{{this.name}} </a>
-                    <div class="meta">{{this.type}}</div>
-                    <div class="meta">Giá tiền: {{this.price}}</div>
-                    <span class="badge badge-primary badge-pill">{{this.number}}</span>
-                </li>
-                {{/each}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <h2>Tổng giá tiền: {{this.sum}}</h2>
-                </li>
-            </ul>
-        </div>
-        <br />
-        {{else}}
-        <div class="ui three top attached steps">
-            <div class="{{this.condition1}} step">
-                <i class="payment icon"></i>
-                <div class="content">
-                    <div class="title">Gói hàng</div>
-                </div>
-            </div>
 
-            <div class="{{this.condition2}} step">
-                <i class="truck icon"></i>
-                <div class="content">
-                    <div class="title">Đang chuyển</div>
-                </div>
-            </div>
-
-            <div class="{{this.condition3}} step">
-                {{!-- <i class="info icon"></i> --}}
-                <div class="content">
-                    <div class="title">Hoàn tất</div>
-                </div>
-            </div>
-        </div>
-        <div class="ui attached segment">
-
-            <ul class="list-group">
-                {{#each this.bill}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="/product/{{this._id}}">{{this.name}} </a>
-                    <div class="meta">{{this.type}}</div>
-                    <div class="meta">Giá tiền: {{this.price}}</div>
-                    <span class="badge badge-primary badge-pill">{{this.number}}</span>
-                </li>
-                {{/each}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <h2>Tổng giá tiền: {{this.sum}}</h2>
-                </li>
-            </ul>
-            {{#if this.condition3}}
-            {{else}}
-            <button class="ui button right deleteBill" data-id={{this._id}}>Hủy đơn hàng</button>
-            {{/if}}
-        </div>
-        <br />
-        {{/if}}
-        {{/each}}
-    </div>
-    {{/if}}
+    <!--   Core JS Files   -->
 
 
-    <script src="../js/core/jquery.min.js" type="text/javascript"></script>
-    <script src="../js/core/popper.min.js" type="text/javascript"></script>
-    <script src="../js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-    <script src="../js/plugins/moment.min.js"></script>
+    <script src="../../js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="../../js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../../js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="../../js/plugins/moment.min.js"></script>
     <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-    <script src="../js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="../../js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="../js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <script src="../../js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!--  Google Maps Plugin    -->
-
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-    <script src="../js/material-kit.js?v=2.0.6" type="text/javascript"></script>
-    <script src="../js/cancleBill.js"></script>
-    <script src="../js/search.js"></script>
+    <script src="../../js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+    <script src="../../js/cart.js"></script>
+    <script>
+        $(document).ready(function () {
+            //init DateTimePickers
+            materialKit.initFormExtendedDatetimepickers();
+
+            // Sliders Init
+            materialKit.initSliders();
+        });
+
+
+        function scrollToDownload() {
+            if ($('.section-download').length != 0) {
+                $("html, body").animate({
+                    scrollTop: $('.section-download').offset().top
+                }, 1000);
+            }
+        }
+
+    </script>
+    <script src="../../search.js"></script>
 </body>

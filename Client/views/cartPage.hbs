@@ -1,9 +1,9 @@
-<body>
+<body id="page-top">
     <nav class="navbar fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="/home">
-                    BLACK HOLE </a>
+                    TeamCNPM </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -86,16 +86,20 @@
                     </li>
                     {{/if}}
 
-                    <li class="nav-item">
-                        <form class="form-inline ml-auto">
+                    <form id="dropdownMenuOffset" class="form-inline ml-auto">
+                        <div class="dropdown mr-1">
                             <div class="form-group no-border">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm">
+                                <input id="searchInput" type="text" class="dropdown-toggle form-control"
+                                    placeholder="Tìm kiếm" aria-label="Search" aria-describedby="basic-addon2"
+                                    aria-haspopup="true" aria-expanded="false" data-offset="10,20" autocomplete="off">
                             </div>
-                            <button type="submit" class="btn btn-white btn-just-icon btn-round">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </form>
-                    </li>
+                            <div id="dropdownItem" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-white btn-just-icon btn-round">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
                 </ul>
             </div>
         </div>
@@ -112,9 +116,9 @@
         <div class="section text-center">
             <div class="row">
                 <div class="col-md-4">
-                    <h2 class="card-title">Tiền đặt hàng : {{sum}}đ</h2>
+                    <h2 class="card-title">Tiền đặt hàng : <span id="sumProduct">{{sum}}</span>đ</h2>
                     <br />
-                    <button class="ui button red">Tiến hành đặt hàng</button>
+                    <button id="purchase" class="ui button red">Tiến hành đặt hàng</button>
                 </div>
                 <div class="col-md-8">
                     <h2 class="title">Giỏ Hàng của bạn</h2>
@@ -122,7 +126,7 @@
                         <div class="row">
                             <div class="ui special cards">
                                 {{#each carts}}
-                                <div class="col-md-4">
+                                <div id="{{this._id}}-cart" class="col-md-4">
                                     <div class="team-player">
                                         <div class="card card-plain">
                                             <div class="blurring dimmable image">
@@ -135,19 +139,19 @@
                                                 </div>
                                                 <div class="col-md-6 ml-auto mr-auto">
 
-                                                    <img src={{this.image}} alt="Thumbnail Image"
+                                                    <img src="{{this.image}}" alt="Thumbnail Image"
                                                         class="img-raised img-fluid">
 
                                                 </div>
                                             </div>
-                                            <a href="/product/{{this.id}}">
+                                            <a href="/product/{{this._id}}">
 
                                                 <h4 class="card-title">{{this.name}}
                                                     <br>
 
                                                 </h4>
                                             </a>
-                                            <a href="/categories/sport">
+                                            <a href="/categories/{{this.category}}">
                                                 <div class="card-description text-muted">{{this.type}}</div>
                                             </a>
                                             <div class="card-body">
@@ -158,20 +162,21 @@
                                             </div>
                                             <div class="card-footer justify-content-center">
 
-                                                <button class="ui button tiny">
+                                                <button class="increaseButton ui button tiny" data-id={{this._id}}
+                                                    data-price={{this.price}}>
                                                     <i class="plus  icon tiny"></i>
                                                 </button>
-                                                <div class="ui button blue tiny">
+                                                <div id="{{this._id}}-number" class="ui button blue tiny">
                                                     {{this.number}}
                                                 </div>
-                                                <button class="ui button tiny">
+                                                <button class="decreaseButton ui button tiny" data-id={{this._id}}
+                                                    data-price={{this.price}}>
                                                     <i class="minus icon tiny"></i>
                                                 </button>
-                                                <button class="ui button red tiny">
+                                                <button class="ui button red tiny removeItem" data-id={{this._id}}
+                                                    data-price={{this.price}} data-number={{this.number}}>
                                                     Xóa
                                                 </button>
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -186,4 +191,21 @@
 
     </div>
     {{/if}}
+
+    <script src="../js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="../js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="../js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--  Google Maps Plugin    -->
+
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="../js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+    <script src="../js/purchase.js"></script>
+    <script src="../js/removeItem.js"></script>
+    <script src="../js/search.js"></script>
+
 </body>

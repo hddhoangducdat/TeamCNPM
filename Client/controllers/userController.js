@@ -26,7 +26,7 @@ exports.upload_profile = async (req, res) => {
   user.address = req.body.address;
   user.phone = req.body.phone;
   if (req.file) {
-    user.image = "http://localhost::3000/" + "uploads/" + req.file.filename;
+    user.image = "http://localhost:3000/" + "uploads/" + req.file.filename;
   }
   await user.save();
   res.redirect("/profile");

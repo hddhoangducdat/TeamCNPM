@@ -16,7 +16,7 @@
     "express-session": "^1.17.0",
     "hbs": "^4.0.6",
     "http-msgs": "^1.0.9",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongoose": "^5.7.10",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
